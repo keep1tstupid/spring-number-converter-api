@@ -29,7 +29,7 @@ public class ArabConverterServiceImpl implements ArabConverterService {
     }
 
     // makes roman number for 4/6/9 cases by combining previous roman numbers in the map
-    private static String handleExceptionalCases
+    public String handleExceptionalCases
             (int number, char curr, char prev, char prev2) {
         String res;
         if (number == 4) {
@@ -39,7 +39,7 @@ public class ArabConverterServiceImpl implements ArabConverterService {
         } else {
             res = "" + curr + prev2;
         }
-        System.out.println("res is " + res);
+        //System.out.println("res is " + res);
         return res;
     }
 

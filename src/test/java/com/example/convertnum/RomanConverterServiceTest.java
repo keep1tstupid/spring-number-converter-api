@@ -9,45 +9,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
-public class ConverterServiceTest {
+public class RomanConverterServiceTest {
 
     @Autowired
-    RomanConverterService converterService;
+    RomanConverterService romanConverterService;
 
     @Test
     public void prepareStringTest() {
         String testingString = " TesT ";
-        assertThat(testingString.toLowerCase().trim()
+        assertThat(romanConverterService.prepareString(testingString)
                 .equals("test"));
     }
 
     @Test
     public void validateEmptyRomanTest() {
         String testingString = "";
-        assertThat(converterService.validateRoman(testingString)).isFalse();
+        assertThat(romanConverterService.validateRoman(testingString)).isFalse();
     }
 
     @Test
     public void validateInvalidRomanTest() {
         String testingString = "012";
-        assertThat(converterService.validateRoman(testingString)).isFalse();
+        assertThat(romanConverterService.validateRoman(testingString)).isFalse();
     }
 
     @Test
     public void validateValidRomanTest() {
         String testingString = "mdcclxiii";
-        assertThat(converterService.validateRoman(testingString)).isTrue();
+        assertThat(romanConverterService.validateRoman(testingString)).isTrue();
     }
 
     @Test
     public void checkInvalidRepetitionsITest() {
         String testingString = "iiii";
-        assertThat(converterService.checkInvalidRepetitions(testingString)).isFalse();
+        assertThat(romanConverterService.checkInvalidRepetitions(testingString)).isFalse();
     }
 
     @Test
     public void checkInvalidRepetitionsVTest() {
         String testingString = "vv";
-        assertThat(converterService.checkInvalidRepetitions(testingString)).isFalse();
+        assertThat(romanConverterService.checkInvalidRepetitions(testingString)).isFalse();
     }
 }
