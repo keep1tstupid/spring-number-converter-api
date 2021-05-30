@@ -18,13 +18,25 @@ public class ConverterControllerTest {
 
     @Test
     public void convertValidRomanNumTest() throws Exception {
-        String url = "/api/convert/" + "XIV";
+        String url = "/api/convert/roman-to-arab/" + "XIV";
         mockMvc.perform(get(url)).andExpect(status().isOk());
     }
 
     @Test
     public void convertInvalidRomanNumTest() throws Exception {
-        String url = "/api/convert/" + "00h";
+        String url = "/api/convert/roman-to-arab/" + "00h";
+        mockMvc.perform(get(url)).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void convertValidArabNumTest() throws Exception {
+        String url = "/api/convert/arab-to-roman/" + "2647";
+        mockMvc.perform(get(url)).andExpect(status().isOk());
+    }
+
+    @Test
+    public void convertInvalidArabNumTest() throws Exception {
+        String url = "/api/convert/arab-to-roman/" + "-6";
         mockMvc.perform(get(url)).andExpect(status().is4xxClientError());
     }
 }
