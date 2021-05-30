@@ -36,7 +36,13 @@ public class ConverterControllerTest {
 
     @Test
     public void convertInvalidArabNumTest() throws Exception {
-        String url = "/api/convert/arab-to-roman/" + "-6";
+        String url = "/api/convert/arab-to-roman/" + "-5";
+        mockMvc.perform(get(url)).andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void convertNanArabNumTest() throws Exception {
+        String url = "/api/convert/arab-to-roman/" + "test";
         mockMvc.perform(get(url)).andExpect(status().is4xxClientError());
     }
 }

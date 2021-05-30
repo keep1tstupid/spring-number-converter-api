@@ -14,13 +14,6 @@ public class ArabConverterServiceTest {
     @Autowired
     ArabConverterService arabConverterService;
 
-//    @Test
-//    public void prepareStringTest() {
-//        String testingString = " TesT ";
-//        assertThat(testingString.toLowerCase().trim()
-//                .equals("test"));
-//    }
-
     @Test
     public void prepareValidNumberTest() {
         String number1 = "123";

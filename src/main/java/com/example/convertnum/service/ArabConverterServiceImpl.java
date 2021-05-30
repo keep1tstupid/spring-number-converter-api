@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+
 @Service
 public class ArabConverterServiceImpl implements ArabConverterService {
 
@@ -20,12 +21,12 @@ public class ArabConverterServiceImpl implements ArabConverterService {
 
     //parse and check - number be an integer between 1 and 4000
     public int prepareNumber(String s) {
-        int number = Integer.parseInt(s);
-        if ( number > 0 && number < 4000 ) {
-            return number;
-        } else {
-            return 0;
-        }
+        int res = 0;
+        try {
+            int number = Integer.parseInt(s);
+            if ( number > 0 && number < 4000 ) res = number;
+        } catch (NumberFormatException ignored) {}
+        return  res;
     }
 
     // makes roman number for 4/6/9 cases by combining previous roman numbers in the map

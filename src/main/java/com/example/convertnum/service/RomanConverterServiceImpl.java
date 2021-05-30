@@ -52,7 +52,7 @@ public class RomanConverterServiceImpl implements RomanConverterService {
     }
 
     public int convert(String value) {
-        StringBuffer romanNum = new StringBuffer(value);
+        StringBuilder romanNum = new StringBuilder(value);
         romanNum.reverse();
         char firstVal = romanNum.charAt(0);
         int currentVal = romanToArabic.get(firstVal);
